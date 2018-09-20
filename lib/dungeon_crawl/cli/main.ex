@@ -3,7 +3,9 @@ defmodule DungeonCrawl.CLI.Main do
 
   def start_game do
     welcome_message()
-    choose_hero()
+    hero = choose_hero()
+    rooms = DungeonCrawl.Room.all()
+    crawl(hero, rooms)
   end
 
   def welcome_message do
@@ -13,6 +15,16 @@ defmodule DungeonCrawl.CLI.Main do
   end
 
   def choose_hero do
-    DungeonCrawl.HeroChoice.start()
+    DungeonCrawl.CLI.HeroChoice.start()
+  end
+
+  def crawl(hero, rooms) do
+    Shell.cmd("clear")
+    Shell.info("You keep moving forward to the next room")
+    Shell.prompt("Press Enter to continue")
+
+    rooms
+    |> Enum.random()
+    |> DungeonCrawl.CLI.RoomActionChoice.start(hero)
   end
 end
