@@ -11,7 +11,6 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     |> print_options
     |> parse_answer
     |> choose_hero(heroes)
-    |> confirm_hero
   end
 
   defp clean_start() do

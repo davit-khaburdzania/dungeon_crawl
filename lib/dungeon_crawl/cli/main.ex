@@ -3,8 +3,10 @@ defmodule DungeonCrawl.CLI.Main do
 
   def start_game do
     welcome_message()
-    character = choose_character()
-    crawl(character, all_rooms())
+
+    choose_character()
+    |> choose_dificulity_level
+    |> crawl(all_rooms())
   end
 
   def welcome_message do
@@ -13,12 +15,16 @@ defmodule DungeonCrawl.CLI.Main do
     Shell.info("You need to survive and find exit.")
   end
 
-  def choose_character do
+  def choose_character() do
     DungeonCrawl.CLI.HeroChoice.start()
   end
 
+  def choose_dificulity_level(character) do
+    DungeonCrawl.CLI.LevelChoice.start(character)
+  end
+
   def crawl(character, rooms) do
-    Shell.info("You keep moving forward to the next room\n")
+    Shell.info("\nYou keep moving forward to the next room\n")
     Shell.prompt("Press Enter to continue\n")
 
     rooms
