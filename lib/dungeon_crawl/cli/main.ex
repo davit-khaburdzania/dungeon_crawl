@@ -28,7 +28,7 @@ defmodule DungeonCrawl.CLI.Main do
     |> handle_action_result
   end
 
-  defp all_rooms, do: DungeonCrawl.Room.all()
+  defp all_rooms, do: DungeonCrawl.Room.all_weighted()
 
   defp trigger_action({_room, action}, character) do
     Shell.cmd("clear")

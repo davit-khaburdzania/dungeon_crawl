@@ -6,7 +6,8 @@ defmodule DungeonCrawl.Character do
             hit_points: 0,
             max_hit_points: 0,
             attack_description: nil,
-            damage_range: nil
+            damage_range: nil,
+            dificulty: :easy
 
   @type t :: %DungeonCrawl.Character{
           name: String.t(),
@@ -30,7 +31,7 @@ defmodule DungeonCrawl.Character do
   end
 
   def print_points(character) do
-    Shell.info("Your current pints are: #{character.hit_points}/#{character.max_hit_points}")
+    Shell.info("Your current points are: #{character.hit_points}/#{character.max_hit_points}")
   end
 end
 
