@@ -2,7 +2,7 @@ defmodule DungeonCrawl.CLI.RoomActionChoice do
   alias Mix.Shell.IO, as: Shell
   import DungeonCrawl.CLI.BaseCommands
 
-  def start(room, _hero) do
+  def start(room) do
     Shell.info(room.description)
 
     room.actions

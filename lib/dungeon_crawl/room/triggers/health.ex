@@ -2,6 +2,8 @@ defmodule DungeonCrawl.Room.Triggers.Health do
   alias Mix.Shell.IO, as: Shell
   alias DungeonCrawl.Character
 
+  @max_health_point 20
+
   def run(character, _action) do
     updated_hit_points =
       character
@@ -17,6 +19,6 @@ defmodule DungeonCrawl.Room.Triggers.Health do
   end
 
   def health_points(character) do
-    div(Enum.random(1..20), character.dificulity_level.weight)
+    div(Enum.random(1..@max_health_point), character.dificulity_level.weight)
   end
 end

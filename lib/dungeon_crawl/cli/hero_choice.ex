@@ -1,5 +1,6 @@
 defmodule DungeonCrawl.CLI.HeroChoice do
   alias Mix.Shell.IO, as: Shell
+  alias DungeonCrawl.GameLog
   import DungeonCrawl.CLI.BaseCommands
 
   def start do
@@ -13,21 +14,10 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     |> choose_hero(heroes)
   end
 
-  defp clean_start() do
-    Shell.cmd("clear")
-    start()
-  end
-
   defp choose_hero(answer, heroes) do
     hero = Enum.at(heroes, answer - 1)
     Shell.info("You choose #{hero.description}")
-    hero
-  end
 
-  defp confirm_hero(hero) do
-    case Shell.yes?("Confirm?") do
-      true -> %{hero | name: "You"}
-      false -> clean_start()
-    end
+    %{hero | log: %GameLog{}}
   end
 end

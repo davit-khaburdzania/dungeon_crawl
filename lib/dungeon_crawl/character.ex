@@ -7,7 +7,8 @@ defmodule DungeonCrawl.Character do
             max_hit_points: 0,
             attack_description: nil,
             damage_range: nil,
-            dificulity_level: nil
+            dificulity_level: nil,
+            log: nil
 
   @type t :: %DungeonCrawl.Character{
           name: String.t(),

@@ -29,8 +29,9 @@ defmodule DungeonCrawl.CLI.Main do
 
     rooms
     |> Enum.random()
-    |> DungeonCrawl.CLI.RoomActionChoice.start(character)
+    |> DungeonCrawl.CLI.RoomActionChoice.start()
     |> trigger_action(character)
+    |> increase_room_log_count
     |> handle_action_result
   end
 
@@ -46,4 +47,11 @@ defmodule DungeonCrawl.CLI.Main do
   end
 
   defp handle_action_result({character, _result}), do: crawl(character, all_rooms())
+
+  defp increase_room_log_count({character, action}) do
+    log = character.log
+    updated_character = %{character | log: %{log | rooms_visited: log.rooms_visited + 1}}
+
+    {updated_character, action}
+  end
 end

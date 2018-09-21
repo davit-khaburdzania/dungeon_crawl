@@ -16,7 +16,7 @@ defmodule DungeonCrawl.Buttle do
     fight(char_a_after, char_b_after)
   end
 
-  def attack(char_a = %{hit_points: hit_points_a}, _char_b) when hit_points_a === 0, do: char_a
+  def attack(char_a = %{hit_points: hit_points_a}, char_b) when hit_points_a === 0, do: char_b
 
   def attack(char_a, char_b) do
     damage_point = Enum.random(char_a.damage_range)
