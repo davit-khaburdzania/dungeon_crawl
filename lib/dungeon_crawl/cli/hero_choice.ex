@@ -27,7 +27,7 @@ defmodule DungeonCrawl.CLI.HeroChoice do
 
   defp confirm_hero(hero) do
     case Shell.yes?("Confirm?") do
-      true -> hero
+      true -> %{hero | name: "You"}
       false -> clean_start()
     end
   end

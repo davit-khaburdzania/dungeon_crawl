@@ -18,7 +18,6 @@ defmodule DungeonCrawl.CLI.Main do
   end
 
   def crawl(character, rooms) do
-    Shell.cmd("clear")
     Shell.info("You keep moving forward to the next room\n")
     Shell.prompt("Press Enter to continue\n")
 
