@@ -19,12 +19,6 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     start()
   end
 
-  defp to_options(heroes) do
-    heroes
-    |> Enum.with_index(1)
-    |> Enum.map(fn {hero, index} -> "#{index} - #{hero.name}" end)
-  end
-
   defp choose_hero(answer, heroes) do
     hero = Enum.at(heroes, answer - 1)
     Shell.info("You choose #{hero.description}")

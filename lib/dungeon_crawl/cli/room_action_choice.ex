@@ -9,7 +9,7 @@ defmodule DungeonCrawl.CLI.RoomActionChoice do
     |> to_options
     |> print_options
     |> parse_answer
-    |> choose_action(room.actions)
+    |> choose_action(room)
   end
 
   # defp clean_start() do
@@ -17,15 +17,9 @@ defmodule DungeonCrawl.CLI.RoomActionChoice do
   #   start()
   # end
 
-  defp to_options(actions) do
-    actions
-    |> Enum.with_index(1)
-    |> Enum.map(fn {action, index} -> "#{index} - #{action.label}" end)
-  end
-
-  defp choose_action(answer, actions) do
-    action = Enum.at(actions, answer - 1)
+  defp choose_action(answer, room) do
+    action = Enum.at(room.actions, answer - 1)
     Shell.info("You choose #{action.label}")
-    action
+    {room, action}
   end
 end

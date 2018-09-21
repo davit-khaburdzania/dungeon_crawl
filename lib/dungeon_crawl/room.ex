@@ -1,6 +1,7 @@
 defmodule DungeonCrawl.Room do
   alias DungeonCrawl.Room
   import DungeonCrawl.Room.Action
+  alias DungeonCrawl.Room.Triggers.Exit
 
   defstruct description: nil, actions: []
 
@@ -8,7 +9,7 @@ defmodule DungeonCrawl.Room do
     do: [
       %Room{
         description: "You found quite place. Looks safe for a little nap",
-        actions: [forward(), rest()]
+        actions: [forward(Exit), rest(Exit)]
       }
     ]
 end
